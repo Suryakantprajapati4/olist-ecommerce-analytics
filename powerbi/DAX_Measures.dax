@@ -1,0 +1,130 @@
+// ============================================================
+// FILE: DAX_Measures.dax
+// DESC: All DAX measures for the Olist dashboard
+// HOW:  In Power BI → New Measure → paste each measure
+//       Organize into folders using the Display Folder property
+// ============================================================
+
+
+// ── BASE MEASURES ────────────────────────────────────────────
+
+Revenue =
+SUM ( 'public bi_fact_sales'[price] )
+
+Freight =
+SUM ( 'public bi_fact_sales'[freight_value] )
+
+GMV =
+[Revenue] + [Freight]
+
+Orders =
+DISTINCTCOUNT ( 'public bi_fact_sales'[order_id] )
+
+Customers =
+DISTINCTCOUNT ( 'public bi_fact_sales'[customer_unique_id] )
+
+Items Sold =
+COUNTROWS ( 'public bi_fact_sales' )
+
+AOV =
+DIVIDE ( [Revenue], [Orders] )
+
+Items per Order =
+DIVIDE ( [Items Sold], [Orders] )
+
+Avg Rating =
+AVERAGE ( 'public bi_fact_sales'[review_score] )
+
+Delivered Orders =
+CALCULATE ( [Orders], 'public bi_fact_sales'[order_status] = "delivered" )
+
+Late Orders =
+CALCULATE (
+    [Orders],
+    'public bi_fact_sales'[order_status] = "delivered",
+    'public bi_fact_sales'[is_late] = 1
+)
+
+On-time % =
+DIVIDE ( [Delivered Orders] - [Late Orders], [Delivered Orders] )
+
+
+// ── TIME INTELLIGENCE ────────────────────────────────────────
+// Requires DimDate table marked as Date Table
+
+Revenue YTD =
+TOTALYTD ( [Revenue], DimDate[Date] )
+
+Revenue LY =
+CALCULATE ( [Revenue], SAMEPERIODLASTYEAR ( DimDate[Date] ) )
+
+YoY % =
+DIVIDE ( [Revenue] - [Revenue LY], [Revenue LY] )
+
+Rolling 30D Revenue =
+CALCULATE (
+    [Revenue],
+    DATESINPERIOD ( DimDate[Date], MAX ( DimDate[Date] ), -30, DAY )
+)
+
+
+// ── REVIEW SENTIMENT ─────────────────────────────────────────
+
+Positive Reviews % =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( 'public bi_fact_sales' ), 'public bi_fact_sales'[review_score] >= 4 ),
+    CALCULATE ( COUNTROWS ( 'public bi_fact_sales' ), NOT ISBLANK ( 'public bi_fact_sales'[review_score] ) )
+)
+
+Negative Reviews % =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( 'public bi_fact_sales' ), 'public bi_fact_sales'[review_score] <= 2 ),
+    CALCULATE ( COUNTROWS ( 'public bi_fact_sales' ), NOT ISBLANK ( 'public bi_fact_sales'[review_score] ) )
+)
+
+
+// ── PAYMENTS ─────────────────────────────────────────────────
+
+Payment Value =
+SUM ( 'public bi_fact_sales'[payment_value] )
+
+Avg Installments =
+AVERAGE ( 'public bi_fact_sales'[payment_installments] )
+
+
+// ── DELIVERY & LOGISTICS (Page 5) ────────────────────────────
+
+Avg Delivery Days =
+AVERAGE ( 'public bi_fact_sales'[delivery_days] )
+
+Late % =
+DIVIDE ( [Late Orders], [Delivered Orders] )
+
+
+// ── SELLERS (Page 8) ─────────────────────────────────────────
+
+Sellers =
+DISTINCTCOUNT ( 'public bi_fact_sales'[seller_id] )
+
+Revenue per Seller =
+DIVIDE ( [Revenue], [Sellers] )
+
+
+// ── DRILLTHROUGH (Page 9) ────────────────────────────────────
+
+Drill Title =
+"Drillthrough: " &
+COALESCE ( SELECTEDVALUE ( 'public bi_fact_sales'[category] ), "All" )
+
+
+// ── CALCULATED COLUMN (not a measure!) ───────────────────────
+// Add as New Column on bi_fact_sales table, NOT as a measure
+
+// Review Bucket =
+// SWITCH(
+//     TRUE(),
+//     ISBLANK('public bi_fact_sales'[review_score]), "No Review",
+//     'public bi_fact_sales'[review_score] >= 4,     "Positive (4-5)",
+//     'public bi_fact_sales'[review_score] = 3,      "Neutral (3)",
+//     "Negative (1-2)"
+// )

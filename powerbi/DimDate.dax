@@ -1,0 +1,27 @@
+// ============================================================
+// FILE: DimDate.dax
+// DESC: Calculated Table for Date Dimension in Power BI
+// HOW:  Modeling tab → New Table → paste this code
+// MODE: Keep as Import mode (not DirectQuery)
+// ============================================================
+
+DimDate =
+ADDCOLUMNS(
+    CALENDAR(
+        MIN('public bi_fact_sales'[purchase_date]),
+        MAX('public bi_fact_sales'[purchase_date])
+    ),
+    "Year",       YEAR([Date]),
+    "Month No",   MONTH([Date]),
+    "Month",      FORMAT([Date], "MMM"),
+    "Year-Month", FORMAT([Date], "YYYY-MM"),
+    "Quarter",    "Q" & FORMAT([Date], "Q"),
+    "Weekday No", WEEKDAY([Date], 2),
+    "Weekday",    FORMAT([Date], "DDD"),
+    "Month Start", DATE(YEAR([Date]), MONTH([Date]), 1)
+)
+
+// After creating:
+// 1. Right-click DimDate → Mark as Date Table → select [Date] column
+// 2. Create relationship: DimDate[Date] → bi_fact_sales[purchase_date]
+// 3. Relationship type: Many-to-One (bi_fact_sales is Many side)
