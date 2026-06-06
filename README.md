@@ -18,20 +18,24 @@
 
 ---
 
-<!-- ============================================================ -->
-<!--         📸 SCREENSHOT KAHAN ADD KARNA HAI                   -->
-<!--                                                              -->
-<!--   1. Executive Dashboard ka full screenshot lo              -->
-<!--   2. File ka naam rakho: dashboard_preview.png              -->
-<!--   3. Repo mein assets/ folder banao                         -->
-<!--   4. Wahan upload karo                                      -->
-<!--   5. Neeche wali line ka comment hata do:                   -->
-<!--                                                              -->
-<!-- ![Dashboard](assets/dashboard_preview.png)                  -->
-<!--                                                              -->
-<!-- ============================================================ -->
+> 📸 
+<img width="2232" height="1240" alt="Screenshot 2026-06-06 173005" src="https://github.com/user-attachments/assets/a9eca7ae-4e54-46d3-bb04-b23967aade4d" />
 
-> 📸 **Add your dashboard screenshot here** — `assets/dashboard_preview.png`
+<img width="2337" height="1302" alt="Screenshot 2026-06-06 155427" src="https://github.com/user-attachments/assets/d1243e37-87dc-4f13-8f91-113a7797e5ce" />
+
+<img width="2321" height="1297" alt="Screenshot 2026-06-06 155456" src="https://github.com/user-attachments/assets/5a0a7dbb-0532-4af2-ab4b-5f2488930396" />
+
+<img width="2336" height="1307" alt="Screenshot 2026-06-06 155522" src="https://github.com/user-attachments/assets/1b50a7a4-f64f-4b96-b604-57b42411a1da" />
+
+<img width="2345" height="1299" alt="Screenshot 2026-06-06 155549" src="https://github.com/user-attachments/assets/bac80ad7-b560-46bf-8d30-153ca92369ea" />
+
+<img width="2345" height="1279" alt="Screenshot 2026-06-06 155613" src="https://github.com/user-attachments/assets/6408a8aa-8b4e-4ea3-bd53-250f9bbca20c" />
+
+<img width="2317" height="1274" alt="Screenshot 2026-06-06 155638" src="https://github.com/user-attachments/assets/8803ef6c-7867-4d54-a154-4fe59db92f2e" />
+
+<img width="2352" height="1318" alt="Screenshot 2026-06-06 155700" src="https://github.com/user-attachments/assets/8cf317b3-26d7-4383-8174-56078cc4b4f7" />
+
+<img width="2336" height="1299" alt="Screenshot 2026-06-06 155726" src="https://github.com/user-attachments/assets/894d53c9-b7c9-4e10-a9e0-2e70d0d3cf51" />
 
 ---
 
