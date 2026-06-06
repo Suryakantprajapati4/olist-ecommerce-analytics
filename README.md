@@ -16,9 +16,6 @@
 
 <br/>
 
----
-
-> 📸 
 <img width="2232" height="1240" alt="Screenshot 2026-06-06 173005" src="https://github.com/user-attachments/assets/a9eca7ae-4e54-46d3-bb04-b23967aade4d" />
 
 <img width="2337" height="1302" alt="Screenshot 2026-06-06 155427" src="https://github.com/user-attachments/assets/d1243e37-87dc-4f13-8f91-113a7797e5ce" />
@@ -36,8 +33,6 @@
 <img width="2352" height="1318" alt="Screenshot 2026-06-06 155700" src="https://github.com/user-attachments/assets/8cf317b3-26d7-4383-8174-56078cc4b4f7" />
 
 <img width="2336" height="1299" alt="Screenshot 2026-06-06 155726" src="https://github.com/user-attachments/assets/894d53c9-b7c9-4e10-a9e0-2e70d0d3cf51" />
-
----
 
 </div>
 
